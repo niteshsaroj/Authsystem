@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <form method="post" class="auth-form">
+    {% csrf_token %}
+    <h2 class="auth-heading">Login</h2>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    {% if messages %}
+      {% for message in messages %}
+        <p class="error-message">{{ message }}</p>
+      {% endfor %}
+    {% endif %}
+    <button type="submit">Login</button>
+    <a href="{% url 'signup' %}" class="auth-link">Don’t have an account? Sign up</a>
+  </form>
+{% endblock %}
